@@ -20,7 +20,7 @@ input:focus {
   outline: none;
 }
 .button {
-  margin-top: 20px;
+  margin: 20px 0px;
   border: none;
   outline: none;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -28,4 +28,13 @@ input:focus {
   font-size: 1.2rem;
   color: #fff;
   padding: 10px 90px;
+  transition: 0.2s all ease;
+}
+.button:hover {
+  cursor: pointer;
+  background-color: rgb(24, 26, 76);
+}
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
