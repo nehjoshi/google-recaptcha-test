@@ -2,15 +2,13 @@ import "../App.css"
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import {  useNavigate } from "react-router-dom";
-const USERNAME = "admin";
-const PASSWORD = "admin";
 export default function Home() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [captcha, setCaptcha] = useState(null);
     const navigate = useNavigate();
     const handleSubmit = () => {
-        if (username === USERNAME && password === PASSWORD) {
+        if (username === process.env.REACT_APP_USERNAME && password === process.env.REACT_APP_PASSWORD && captcha) {
             navigate('/success');
         }
         else {
@@ -28,7 +26,7 @@ export default function Home() {
             <input placeholder="Username" onChange={e => setUsername(e.target.value)} />
             <input placeholder="Password" type="password" onChange={e => setPassword(e.target.value)}/>
             <button onClick={handleSubmit} className="button" disabled={captcha===null}>Login</button>
-            <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHA_KEY} onChange={(value) => handleCaptcha(value)} />
+            <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHA_KEY} onChange={(value) => handleCaptcha(value)} /> 
         </div>
     )
 }
